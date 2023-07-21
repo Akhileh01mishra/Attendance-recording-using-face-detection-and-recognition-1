@@ -1,0 +1,62 @@
+{%load static%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background:url('{% static "img/bg_image.jpeg"%}') no-repeat center center fixed;
+            background-size: cover;
+            
+        }
+    </style>
+    </head>
+    <body onload="Check()">
+        
+    <div class="col-lg-4" style="background: rgba(0,0,0,0.6);margin-top:300px ; padding-top:1em;padding-bottom:3em;color:#fff;border-radius:10px;-webkit-box-shadow: 2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+-moz-box-shadow:    2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7); margin-left:auto; margin-right: auto; ">
+<form action="/validate" method="get">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <legend class="border-bottom mb-4"> Log In </legend>
+      <input type="text" id="username" name="username" placeholder="Enter Username" class="form-control" />
+      <label class="form-label" for="username">Username</label>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="password" name="password" placeholder="Enter Password" class="form-control" />
+      <label class="form-label" for="password">Password</label>
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        
+      </div>
+  
+    </div>
+  
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    <input type="text" hidden="true"  value={{flag}} id="flag">
+  </form>
+  
+</div>
+    </body>
+    {%block js_block%}
+    <script>
+      function Check(){
+        v=document.getElementById("flag").value;
+        console.log(v);
+        if(v=='1'){
+          alert("Invalid Credentials !!");
+        }
+      }
+    </script>
+    {% endblock %}
+</html>
